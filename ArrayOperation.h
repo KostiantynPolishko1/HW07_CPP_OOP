@@ -21,23 +21,21 @@ void deleteArr(int* arr, const short size = 2) {
 }
 ;
 
-int sumArr(int* arr, const short size = 2) {
-
-	int sum = 0;
+void sumArr(int* arr, int &sum, const short size = 2) {
 
 	for (int* iter = arr; iter != arr + size; iter++) {
 		sum += *iter;
 	}
-	return sum ;
 }
 ;
-int substarctArr(int* arr, const short size = 2) {
-
-	int substract = 0;
+void substarctArr(int* arr, int &substract, const short size = 2) {
 
 	for (int* iter = arr; iter != arr + size; iter++) {
-		substract += *iter;
+		if (iter == arr + 0) {
+			substract += *iter;
+			continue;
+		}
+		substract -= *iter;
 	}
-	return substract;
 }
 ;

@@ -11,3 +11,7 @@ void showArr(int* arr, const short size = 2, const char* delim = " ") {
 	cout << "\n";
 }
 ;
+inline void showResult(const int value, const std::string nameFunction) {
+	cout << "\n" << nameFunction << " = " << value << "\n";
+}
+;
