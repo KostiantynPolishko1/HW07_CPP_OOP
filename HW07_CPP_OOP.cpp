@@ -12,22 +12,28 @@ int main(void)
     std::string arrFunction[] = { "Sum", "Subsract", "Int -> Float", "Float -> Int" };
     //float sumF = 0.0f, substractF = 0.0f;
 
-    int* arr = createArr(size);
-    if (!arr) {
-        throw new std::runtime_error("no RAM memory");
-    }
+    int* arr = createArr(0,size);
 
     fillArr(arr, min, max, size);
-    showArr(arr, size);
+    float *arrf = convertNaturalRealNumber(arr, size);
+    showArr(arrf, size);
+
+    /*showArr(arr, size);
 
     sumArr(arr, sum, size);
     showResult(sum, arrFunction[0]);
 
     substarctArr(arr, substarct, size);
-    showResult(substarct, arrFunction[1]);
+    showResult(substarct, arrFunction[1]);*/
 
-    deleteArr(arr, size);
+    //deleteArr(arr);
+
+    deleteArr(arrf);
 
     return 0;
 }
 ;
+
+//if (!arr) {
+//    throw new std::runtime_error("no RAM memory");
+//}
