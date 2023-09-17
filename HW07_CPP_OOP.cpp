@@ -22,8 +22,14 @@ int main(void)
     short indMenu(0), indMenuOperation;
     short size(5);
     short min(1), max(11);
-    int sum(0), substarct(0);
-    //float sumF = 0.0f, substractF = 0.0f;
+    
+    int sum(0);
+    int substarct(0);
+    float sumf(0);
+    float substarctf(0.0f);
+
+    int* arr = nullptr;
+    float* arrf = nullptr;
 
     std::string arrType[] = { "DIGIT", "ARRAY", "EXIT" };
     std::string arrOperation[] = { "GET", "SUM", "SUBSRACT", "INT -> FLOAT", "FLOAT -> INT", "EXIT" };
@@ -34,59 +40,69 @@ int main(void)
     switch (indMenu)
     {
     case DIGIT:
-        std::cout << "\nDIGIT\n";
+        std::cout << "\n" << arrType[DIGIT] << "\n";
         break;
     case ARRAY:
-        cout << "\nARRAY\n";
-        indMenuOperation = 0;
-        
-        do {
+        cout << "\n" << arrType[ARRAY] << "\n";
+        indMenuOperation = 0;       
+        arr = createArr(0, size);
+        fillArr(arr, min, max, size);
+
+        do 
+        {
         selectMenu(arrOperation, OUT, indMenuOperation);
         printMenu(arrOperation, OUT, indMenuOperation);
 
             switch (indMenuOperation)
             {
             case GET:
-                cout << "\nGET\n";
+                cout << arrOperation[GET] << "\n";
+                if (arr != nullptr)
+                    showArr(arr, size);
+                else
+                    showArr(arrf, size);
                 break;
-            case SUM:
-                cout << "\nSUM\n";
+
+            case SUM:               
+                cout << arrOperation[SUM] << "\n";
+                sumArr(arr, sum, size);
+                showResult(sum);
+                sum = 0;
+                sumf = 0.0f;
                 break;
-            case SUBSTRACT:
-                cout << "\nSUBSTRACT\n";
+
+            case SUBSTRACT:                
+                cout << arrOperation[SUBSTRACT] << "\n";
+                substarctArr(arr, substarct, size);
+                showResult(substarct);
+                substarct = 0;
+                substarctf = 0.0f;
                 break;
+
             case INT_TO_FLOAT:
-                cout << "\nINT_TO_FLOAT\n";
+                cout << arrOperation[INT_TO_FLOAT] << "\n";
+                arrf = createArr(0.0f, size);
+                copyArr(arr, arrf, size);
+                deleteArr(arr);
                 break;
+
             case FLOAT_TO_INT:
-                cout << "\nFLOAT_TO_INT\n";
+                cout << arrOperation[FLOAT_TO_INT] << "\n";
                 break;
             }
         } while (static_cast<Operation>(indMenuOperation) != OUT );
 
+        if (!arr)
+            deleteArr(arr);
+        else
+            deleteArr(arrf);
+
         break;
     case EXIT:
-        cout << "\nEXIT\n";
+        cout << "\n" << arrType[EXIT] << "\n";
     default:
         return 0;
     }
-
-    /*int* arr = createArr(0,size);
-
-    fillArr(arr, min, max, size);
-    float *arrf = convertNaturalRealNumber(arr, size);
-    showArr(arrf, size);*/
-
-    /*showArr(arr, size);
-
-    sumArr(arr, sum, size);
-    showResult(sum, arrOperation[0]);
-
-    substarctArr(arr, substarct, size);
-    showResult(substarct, arrOperation[1]);*/
-
-    //deleteArr(arr);
-    //deleteArr(arrf);
 
     return 0;
 }

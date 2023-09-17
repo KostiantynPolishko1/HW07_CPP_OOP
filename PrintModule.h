@@ -9,7 +9,7 @@ using std::cin;
 void showArr(int* arr, const short size = 2, const char* delim = " ");
 void showArr(float* arr, const short size = 2, const char* delim = " ");
 
-inline void showResult(const int value, const std::string nameFunction);
+inline void showResult(const int value);
 
 short indexMenu(short& indMenu, const short size);
 void printMenu(std::string* const arr, const short size, const short& indMenu);
@@ -32,8 +32,8 @@ void showArr(float* arr, const short size, const char* delim) {
 	cout << "\n";
 }
 ;
-inline void showResult(const int value, const std::string nameFunction) {
-	cout << "\n" << nameFunction << " = " << value << "\n";
+inline void showResult(const int value) {
+	cout << "\nresult = " << value << "\n";
 }
 ;
 short indexMenu(short& indMenu, const short size) {
