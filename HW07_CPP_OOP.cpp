@@ -99,15 +99,15 @@ int main(void)
                 case SUBSTRACT:
                     cout << arrOperation[SUBSTRACT] << "\n";
                     break;
-                
+
                 case INT_TO_FLOAT:
                     cout << arrOperation[INT_TO_FLOAT] << "\n";
                     break;
-                
+
                 case FLOAT_TO_INT:
                     cout << arrOperation[FLOAT_TO_INT] << "\n";
                     break;
-                
+
                 case EXIT3:
                     cout << arrOperation[EXIT3] << "\n";
                     break;
