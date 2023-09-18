@@ -54,6 +54,12 @@ void copyArr(int* arr, float *arrf, const short size = 2) {
 		*iter = static_cast<float>(*arr++);
 }
 ;
+void copyArr(float* arrf, int *arr, const short size = 2) {
+
+	for (float* iter = arrf; iter != arrf + size; iter++)
+		*iter = static_cast<float>(*arr++);
+}
+;
 void deleteArr(int* arr) {
 	delete[] arr;
 	arr = nullptr;
@@ -98,14 +104,5 @@ void substarctArr(float* arr, float &substract, const short size) {
 		}
 		substract -= *iter;
 	}
-}
-;
-float* convertNaturalRealNumber(int *arr, float *arrf, const short size = 2) {
-	
-	arrf = createArr(0.0f, size);
-	copyArr(arr, arrf, size);
-	deleteArr(arr);
-
-	return arrf;
 }
 ;

@@ -247,17 +247,32 @@ int main(void)
 
                 case INT_TO_FLOAT:
                     cout << arrOperation[INT_TO_FLOAT] << "\n";
-                    arrf = createArr(0.0f, size);
                     if (!arrf) {
-                        throw new std::runtime_error("no RAM memory");
-                        return 1;
+                        arrf = createArr(0.0f, size);
+                        if (!arrf) {
+                            throw new std::runtime_error("no RAM memory");
+                            return 1;
+                        }
+                        copyArr(arr, arrf, size);
+                        deleteArr(arr);
                     }
-                    copyArr(arr, arrf, size);
-                    deleteArr(arr);
+                    else
+                        cout << "\nNO TRANSFORM! VARIABLES ARE ALREADY FLOAT!";
                     break;
 
                 case FLOAT_TO_INT:
                     cout << arrOperation[FLOAT_TO_INT] << "\n";
+                    if (!arr) {
+                        arr = createArr(0, size);
+                        if (!arr) {
+                            throw new std::runtime_error("no RAM memory");
+                            return 1;
+                        }
+                        copyArr(arrf, arr, size);
+                        deleteArr(arrf);
+                    }
+                    else
+                        cout << "\nNO TRANSFORM! VARIABLES ARE ALREADY INT!";
                     break;
                 }
             } while (static_cast<Operation>(indMenuOperation) != EXIT3);
