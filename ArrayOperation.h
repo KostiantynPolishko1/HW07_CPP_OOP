@@ -1,7 +1,7 @@
 #pragma once
 #include <ctime>
 
-//==================PROTOTYPE==================//
+//==================PROTOTYPES==================//
 
 inline int* createArr(const int value, const short size = 2);
 inline float* createArr(const float value, const short size = 2);

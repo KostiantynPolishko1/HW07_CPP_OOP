@@ -10,6 +10,7 @@ void showArr(int* arr, const short size = 2, const char* delim = " ");
 void showArr(float* arr, const short size = 2, const char* delim = " ");
 
 inline void showResult(const int value);
+inline void showResult(const float value);
 
 short indexMenu(short& indMenu, const short size);
 void printMenu(std::string* const arr, const short size, std::string nameMenu, const short& indMenu = 0);
@@ -33,7 +34,11 @@ void showArr(float* arr, const short size, const char* delim) {
 }
 ;
 inline void showResult(const int value) {
-    cout << "\nresult = " << value << "\n";
+    cout << "\nresult = " << value;
+}
+;
+inline void showResult(const float value) {
+    cout << "\nresult = " << value;
 }
 ;
 short indexMenu(short& indMenu, const short size) {

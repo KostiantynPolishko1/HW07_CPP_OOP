@@ -59,26 +59,29 @@ int main(void)
             indMenuDigit = 0;
 
             //menu for select type of variables
-            selectMenu(arrDigit, EXIT, arrMenu[1], indMenuDigit);
-            printMenu(arrDigit, EXIT, arrMenu[1], indMenuDigit);
+            selectMenu(arrDigit, EXIT2, arrMenu[1], indMenuDigit);
+            printMenu(arrDigit, EXIT2, arrMenu[1], indMenuDigit);
 
             switch (indMenuDigit)
             {
             case INTEGER:
-                a = createValue(a, min, max);
-                b = createValue(a, min, max);
-                break;
+                {
+                    a = createValue(a, min, max);
+                    b = createValue(b, min, max);
+                    break;
+                }
 
             case FLOAT:
-                af = createValue(af, min, max);
-                bf = createValue(af, min, max);
-                break;
+                {
+                    af = createValue(af, min, max);
+                    bf = createValue(af, min, max);
+                    break;
+                }
 
             case EXIT2:
                 cout << arrDigit[EXIT2] << "\n";
                 return 0;
             }
-            break;
 
             //menu for select type of operations
             do {
@@ -90,14 +93,42 @@ int main(void)
 
                 case GET:
                     cout << arrOperation[GET] << "\n";
+                    if (!a && !b) {
+                        showResult(af);
+                        showResult(bf);
+                    }
+                    else {
+                        showResult(a);
+                        showResult(b);
+                    }
                     break;
 
                 case SUM:
                     cout << arrOperation[SUM] << "\n";
+                    if (!a && !b) {
+                        sumValue(af, bf, sumf);
+                        showResult(sumf);
+                    }
+                    else {
+                        sumValue(a, b, sum);
+                        showResult(sum);
+                    }
+                    sum = 0;
+                    sumf = 0.0f;
                     break;
 
                 case SUBSTRACT:
                     cout << arrOperation[SUBSTRACT] << "\n";
+                    if (!a && !b) {
+                        substractValue(af, bf, sumf);
+                        showResult(sumf);
+                    }
+                    else {
+                        substractValue(a, b, sum);
+                        showResult(sum);
+                    }
+                    sum = 0;
+                    sumf = 0.0f;
                     break;
 
                 case INT_TO_FLOAT:
