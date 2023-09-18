@@ -133,14 +133,32 @@ int main(void)
 
                 case INT_TO_FLOAT:
                     cout << arrOperation[INT_TO_FLOAT] << "\n";
+                    if (!af && !bf) {
+                        af = valueIntFloat(a);
+                        bf = valueIntFloat(b);
+                        a = 0, b = 0;
+                        showResult(af);
+                        showResult(bf);
+                    }
+                    else
+                        cout << "\nNO TRANSFORM! VARIABLES ARE ALREADY FLOAT!";
                     break;
 
                 case FLOAT_TO_INT:
                     cout << arrOperation[FLOAT_TO_INT] << "\n";
+                    if (!a && !b) {
+                        a = valueIntFloat(af);
+                        b = valueIntFloat(bf);
+                        af = 0.0f, bf = 0.0f;
+                        showResult(a);
+                        showResult(b);
+                    }
+                    else 
+                        cout << "\nNO TRANSFORM! VARIABLES ARE ALREADY INT!";
                     break;
 
                 case EXIT3:
-                    cout << arrOperation[EXIT3] << "\n";
+                    cout << arrOperation[EXIT3] << "\n";               
                     break;
                 }
 

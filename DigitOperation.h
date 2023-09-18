@@ -12,6 +12,9 @@ inline void sumValue(float a, float b, float& sum);
 inline void substractValue(int a, int b, int &substract);
 inline void substractValue(float a, float b, float& substract);
 
+inline float valueIntFloat(int value);
+inline int valueIntFloat(float value);
+
 //==================FUNCTIONS==================//
 
 inline int createValue(int value, short min, short max) {
@@ -42,5 +45,13 @@ inline void substractValue(int a, int b, int& substract) {
 ;
 inline void substractValue(float a, float b, float& substract) {
 	substract = a - b;
+}
+;
+inline float valueIntFloat(int value) {
+	return static_cast<float>(value);
+}
+;
+inline int valueIntFloat(float value) {
+	return static_cast<int>(value);
 }
 ;
