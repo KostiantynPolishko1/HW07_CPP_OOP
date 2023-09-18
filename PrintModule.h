@@ -12,8 +12,8 @@ void showArr(float* arr, const short size = 2, const char* delim = " ");
 inline void showResult(const int value);
 
 short indexMenu(short& indMenu, const short size);
-void printMenu(std::string* const arr, const short size, const short& indMenu);
-void selectMenu(std::string* const arr, const short size, const short& indMenu = 0);
+void printMenu(std::string* const arr, const short size, std::string nameMenu, const short& indMenu = 0);
+void selectMenu(std::string* const arr, const short size, std::string nameMenu, const short& indMenu = 0);
 
 //==================FUNCTION==================//
 
@@ -71,9 +71,10 @@ short indexMenu(short& indMenu, const short size) {
     }
 }
 ;
-void printMenu(std::string* const arr, const short size, const short& indMenu) {
+void printMenu(std::string* const arr, const short size, std::string nameMenu, const short& indMenu) {
 
     cout << "\n MENU:\n";
+
     for (short i = 0; i <= size; i++) {
         if (indMenu == i) {
             cout << " -> " << *(arr + i) << "\n";
@@ -83,9 +84,9 @@ void printMenu(std::string* const arr, const short size, const short& indMenu) {
     }
 }
 ;
-void selectMenu(std::string* const arr, const short size, short& indMenu) {
+void selectMenu(std::string* const arr, const short size, std::string nameMenu, short& indMenu) {
     do {
-        printMenu(arr, size, indMenu);
+        printMenu(arr, size, nameMenu, indMenu);
 
     } while (static_cast<char>(indexMenu(indMenu, size)) != '\n');
 };

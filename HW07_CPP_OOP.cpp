@@ -44,10 +44,9 @@ int main(void)
     std::string arrOperation[] = { "GET", "SUM", "SUBSRACT", "INT -> FLOAT", "FLOAT -> INT", "EXIT" };
 
     //menu for select type of structure value or array
-    selectMenu(arrType, EXIT, indMenu);
-    printMenu(arrType, EXIT, indMenu);
+    selectMenu(arrType, EXIT, arrMenu[0], indMenu);
+    printMenu(arrType, EXIT, arrMenu[0], indMenu);
 
-    //menu for selct operation
     switch (indMenu)
     {
     case DIGIT:
@@ -58,19 +57,31 @@ int main(void)
         indMenuOperation = 0;
         indMenuDigit = 0;
 
-        selectMenu(arrDigit, EXIT, indMenuDigit);
-        printMenu(arrDigit, EXIT, indMenuDigit);
+        //menu for selct operation
+        selectMenu(arrDigit, EXIT, arrMenu[1], indMenuDigit);
+        printMenu(arrDigit, EXIT, arrMenu[1], indMenuDigit);
 
         switch (indMenuDigit)
         {
         case INTEGER:
             arr = createArr(0, size);
+
+            if (!arr) {
+                throw new std::runtime_error("no RAM memory");
+                return 1;
+            }
             fillArr(arr, min, max, size);
             break;
+
         case FLOAT:
-            arr = createArr(0, size);
+            arrf = createArr(0.0f, size);
+            if (!arrf) {
+                throw new std::runtime_error("no RAM memory");
+                return 1;
+            }
             fillArr(arrf, min, max, size);
             break;
+
         case EXIT2:
             cout << arrDigit[EXIT2] << "\n";
             return 0;
@@ -78,8 +89,8 @@ int main(void)
 
         do
         {
-            selectMenu(arrOperation, EXIT3, indMenuOperation);
-            printMenu(arrOperation, EXIT3, indMenuOperation);
+            selectMenu(arrOperation, EXIT3, arrMenu[2], indMenuOperation);
+            printMenu(arrOperation, EXIT3, arrMenu[2], indMenuOperation);
 
             switch (indMenuOperation)
             {
@@ -110,6 +121,10 @@ int main(void)
             case INT_TO_FLOAT:
                 cout << arrOperation[INT_TO_FLOAT] << "\n";
                 arrf = createArr(0.0f, size);
+                if (!arrf) {
+                    throw new std::runtime_error("no RAM memory");
+                    return 1;
+                }
                 copyArr(arr, arrf, size);
                 deleteArr(arr);
                 break;
@@ -135,7 +150,3 @@ int main(void)
     return 0;
 }
 ;
-
-//if (!arr) {
-//    throw new std::runtime_error("no RAM memory");
-//}
