@@ -18,22 +18,22 @@ void selectMenu(std::string* const arr, const short size, const short& indMenu =
 //==================FUNCTION==================//
 
 void showArr(int* arr, const short size, const char* delim) {
-	for (int* iter = arr; iter != arr + size; iter++) {
-		cout << * iter << *delim;
-	}
-	cout << "\n";
+    for (int* iter = arr; iter != arr + size; iter++) {
+        cout << *iter << *delim;
+    }
+    cout << "\n";
 }
 ;
 void showArr(float* arr, const short size, const char* delim) {
 
-	for (float* iter = arr; iter != arr + size; iter++) {
-		cout << *iter << *delim;
-	}
-	cout << "\n";
+    for (float* iter = arr; iter != arr + size; iter++) {
+        cout << *iter << *delim;
+    }
+    cout << "\n";
 }
 ;
 inline void showResult(const int value) {
-	cout << "\nresult = " << value << "\n";
+    cout << "\nresult = " << value << "\n";
 }
 ;
 short indexMenu(short& indMenu, const short size) {
@@ -72,15 +72,15 @@ short indexMenu(short& indMenu, const short size) {
 }
 ;
 void printMenu(std::string* const arr, const short size, const short& indMenu) {
-	
-	cout << "\n MENU:\n";
-	for (short i = 0; i <= size; i++) {
-		if (indMenu == i) {
-			cout << " -> " << *(arr + i) << "\n";
-			continue;
-		}
-		cout << "    " << *(arr + i) << "\n";
-	}
+
+    cout << "\n MENU:\n";
+    for (short i = 0; i <= size; i++) {
+        if (indMenu == i) {
+            cout << " -> " << *(arr + i) << "\n";
+            continue;
+        }
+        cout << "    " << *(arr + i) << "\n";
+    }
 }
 ;
 void selectMenu(std::string* const arr, const short size, short& indMenu) {

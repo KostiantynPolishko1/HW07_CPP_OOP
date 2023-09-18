@@ -6,23 +6,30 @@ enum Type {
     DIGIT,
     ARRAY,
     EXIT
-};
-
+}
+;
+enum Digit {
+    INTEGER,
+    FLOAT,
+    EXIT2
+}
+;
 enum Operation {
     GET,
     SUM,
     SUBSTRACT,
     INT_TO_FLOAT,
     FLOAT_TO_INT,
-    OUT
-};
+    EXIT3
+}
+;
 
 int main(void)
 {
-    short indMenu(0), indMenuOperation;
+    short indMenu(0), indMenuDigit, indMenuOperation;
     short size(5);
     short min(1), max(11);
-    
+
     int sum(0);
     int substarct(0);
     float sumf(0);
@@ -31,12 +38,16 @@ int main(void)
     int* arr = nullptr;
     float* arrf = nullptr;
 
+    std::string arrMenu[] = { "TYPE OPERATIONS", "TYPE VALUES", "OPERATIONS" };
     std::string arrType[] = { "DIGIT", "ARRAY", "EXIT" };
+    std::string arrDigit[] = { "INTEGER", "FLOAT", "EXIT" };
     std::string arrOperation[] = { "GET", "SUM", "SUBSRACT", "INT -> FLOAT", "FLOAT -> INT", "EXIT" };
-    
+
+    //menu for select type of structure value or array
     selectMenu(arrType, EXIT, indMenu);
     printMenu(arrType, EXIT, indMenu);
 
+    //menu for selct operation
     switch (indMenu)
     {
     case DIGIT:
@@ -44,14 +55,31 @@ int main(void)
         break;
     case ARRAY:
         cout << "\n" << arrType[ARRAY] << "\n";
-        indMenuOperation = 0;       
-        arr = createArr(0, size);
-        fillArr(arr, min, max, size);
+        indMenuOperation = 0;
+        indMenuDigit = 0;
 
-        do 
+        selectMenu(arrDigit, EXIT, indMenuDigit);
+        printMenu(arrDigit, EXIT, indMenuDigit);
+
+        switch (indMenuDigit)
         {
-        selectMenu(arrOperation, OUT, indMenuOperation);
-        printMenu(arrOperation, OUT, indMenuOperation);
+        case INTEGER:
+            arr = createArr(0, size);
+            fillArr(arr, min, max, size);
+            break;
+        case FLOAT:
+            arr = createArr(0, size);
+            fillArr(arrf, min, max, size);
+            break;
+        case EXIT2:
+            cout << arrDigit[EXIT2] << "\n";
+            return 0;
+        }
+
+        do
+        {
+            selectMenu(arrOperation, EXIT3, indMenuOperation);
+            printMenu(arrOperation, EXIT3, indMenuOperation);
 
             switch (indMenuOperation)
             {
@@ -63,7 +91,7 @@ int main(void)
                     showArr(arrf, size);
                 break;
 
-            case SUM:               
+            case SUM:
                 cout << arrOperation[SUM] << "\n";
                 sumArr(arr, sum, size);
                 showResult(sum);
@@ -71,7 +99,7 @@ int main(void)
                 sumf = 0.0f;
                 break;
 
-            case SUBSTRACT:                
+            case SUBSTRACT:
                 cout << arrOperation[SUBSTRACT] << "\n";
                 substarctArr(arr, substarct, size);
                 showResult(substarct);
@@ -90,7 +118,7 @@ int main(void)
                 cout << arrOperation[FLOAT_TO_INT] << "\n";
                 break;
             }
-        } while (static_cast<Operation>(indMenuOperation) != OUT );
+        } while (static_cast<Operation>(indMenuOperation) != EXIT3);
 
         if (!arr)
             deleteArr(arr);
