@@ -97,7 +97,7 @@ int main(void)
                         showResult(af);
                         showResult(bf);
                     }
-                    else {
+                    else if (!af && !bf) {
                         showResult(a);
                         showResult(b);
                     }
@@ -109,7 +109,7 @@ int main(void)
                         sumValue(af, bf, sumf);
                         showResult(sumf);
                     }
-                    else {
+                    else if (!af && !bf) {
                         sumValue(a, b, sum);
                         showResult(sum);
                     }
@@ -123,7 +123,7 @@ int main(void)
                         substractValue(af, bf, sumf);
                         showResult(sumf);
                     }
-                    else {
+                    else if (!af && !bf) {
                         substractValue(a, b, sum);
                         showResult(sum);
                     }
@@ -133,14 +133,32 @@ int main(void)
 
                 case INT_TO_FLOAT:
                     cout << arrOperation[INT_TO_FLOAT] << "\n";
+                    if (!af && !bf) {
+                        af = valueIntFloat(a);
+                        bf = valueIntFloat(b);
+                        a = 0, b = 0;
+                        showResult(af);
+                        showResult(bf);
+                    }
+                    else
+                        cout << "\nNO TRANSFORM! VARIABLES ARE ALREADY FLOAT!";
                     break;
 
                 case FLOAT_TO_INT:
                     cout << arrOperation[FLOAT_TO_INT] << "\n";
+                    if (!a && !b) {
+                        a = valueIntFloat(af);
+                        b = valueIntFloat(bf);
+                        af = 0.0f, bf = 0.0f;
+                        showResult(a);
+                        showResult(b);
+                    }
+                    else 
+                        cout << "\nNO TRANSFORM! VARIABLES ARE ALREADY INT!";
                     break;
 
                 case EXIT3:
-                    cout << arrOperation[EXIT3] << "\n";
+                    cout << arrOperation[EXIT3] << "\n";               
                     break;
                 }
 
@@ -193,26 +211,38 @@ int main(void)
                 {
                 case GET:
                     cout << arrOperation[GET] << "\n";
-                    if (arr != nullptr)
-                        showArr(arr, size);
-                    else
+                    if (!arr)
                         showArr(arrf, size);
+                    else
+                        showArr(arr, size);
                     break;
 
                 case SUM:
                     cout << arrOperation[SUM] << "\n";
-                    sumArr(arr, sum, size);
-                    showResult(sum);
-                    sum = 0;
-                    sumf = 0.0f;
+                    if (!arr) {
+                        sumArr(arrf, sumf, size);
+                        showResult(sumf);
+                        sumf = 0.0f;
+                    }
+                    else if(!arrf) {
+                        sumArr(arr, sum, size);
+                        showResult(sum);
+                        sum = 0;
+                    }                                     
                     break;
 
                 case SUBSTRACT:
                     cout << arrOperation[SUBSTRACT] << "\n";
-                    substarctArr(arr, substarct, size);
-                    showResult(substarct);
-                    substarct = 0;
-                    substarctf = 0.0f;
+                    if (!arr) {
+                        substarctArr(arrf, substarctf, size);
+                        showResult(substarctf);
+                        substarctf = 0.0f;
+                    }
+                    else if(!arrf) {
+                        substarctArr(arr, substarct, size);
+                        showResult(substarct);
+                        substarct = 0;
+                    }
                     break;
 
                 case INT_TO_FLOAT:
@@ -233,9 +263,9 @@ int main(void)
             } while (static_cast<Operation>(indMenuOperation) != EXIT3);
 
             if (!arr)
-                deleteArr(arr);
-            else
                 deleteArr(arrf);
+            else if (!arrf)
+                deleteArr(arr);
 
             break;
         }

@@ -5,13 +5,18 @@
 
 inline int* createArr(const int value, const short size = 2);
 inline float* createArr(const float value, const short size = 2);
+
 void fillArr(int* arr, short min = 0, short max = 9, const short size = 2);
 void fillArr(float* arr, short min = 0, short max = 9, const short size = 2);
+
 void deleteArr(int* arr);
 void deleteArr(float* arr);
 
 void sumArr(int* arr, int& sum, const short size = 2);
+void sumArr(float* arr, float& sum, const short size = 2);
+
 void substarctArr(int* arr, int& substract, const short size = 2);
+void substarctArr(float* arr, float& substract, const short size = 2);
 
 //==================FUNCTIONS==================//
 
@@ -66,9 +71,27 @@ void sumArr(int* arr, int &sum, const short size) {
 	}
 }
 ;
+void sumArr(float* arr, float &sum, const short size) {
+
+	for (float* iter = arr; iter != arr + size; iter++) {
+		sum += *iter;
+	}
+}
+;
 void substarctArr(int* arr, int &substract, const short size) {
 
 	for (int* iter = arr; iter != arr + size; iter++) {
+		if (iter == arr + 0) {
+			substract += *iter;
+			continue;
+		}
+		substract -= *iter;
+	}
+}
+;
+void substarctArr(float* arr, float &substract, const short size) {
+
+	for (float* iter = arr; iter != arr + size; iter++) {
 		if (iter == arr + 0) {
 			substract += *iter;
 			continue;
