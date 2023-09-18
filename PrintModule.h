@@ -73,7 +73,7 @@ short indexMenu(short& indMenu, const short size) {
 ;
 void printMenu(std::string* const arr, const short size, std::string nameMenu, const short& indMenu) {
 
-    cout << "\n MENU:\n";
+    cout << "\n MENU:" << nameMenu << "\n";
 
     for (short i = 0; i <= size; i++) {
         if (indMenu == i) {
