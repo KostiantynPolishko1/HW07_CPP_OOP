@@ -49,6 +49,7 @@ int main(void)
     //menu for select type of structure value or array
     selectMenu(arrType, EXIT, arrMenu[0], indMenu);
     printMenu(arrType, EXIT, arrMenu[0], indMenu);
+    system("CLS");
 
     switch (indMenu)
     {
@@ -61,10 +62,12 @@ int main(void)
             //menu for select type of variables
             selectMenu(arrDigit, EXIT2, arrMenu[1], indMenuDigit);
             printMenu(arrDigit, EXIT2, arrMenu[1], indMenuDigit);
+            system("CLS");
 
             switch (indMenuDigit)
             {
             case INTEGER:
+                cout << arrDigit[INTEGER] << "\n";
                 {
                     a = createValue(a, min, max);
                     b = createValue(b, min, max);
@@ -72,6 +75,7 @@ int main(void)
                 }
 
             case FLOAT:
+                cout << arrDigit[FLOAT] << "\n";
                 {
                     af = createValue(af, min, max);
                     bf = createValue(af, min, max);
@@ -87,6 +91,7 @@ int main(void)
             do {
                 selectMenu(arrOperation, EXIT3, arrMenu[2], indMenuOperation);
                 printMenu(arrOperation, EXIT3, arrMenu[2], indMenuOperation);
+                system("CLS");
 
                 switch (indMenuOperation)
                 {
@@ -164,6 +169,7 @@ int main(void)
 
             } while (static_cast<Operation>(indMenuOperation) != EXIT3);
 
+            cout << "\n" << arrOperation[EXIT3] << "\n";
         }
     case ARRAY:
         {
@@ -174,10 +180,12 @@ int main(void)
             //menu for select type of variables
             selectMenu(arrDigit, EXIT, arrMenu[1], indMenuDigit);
             printMenu(arrDigit, EXIT, arrMenu[1], indMenuDigit);
+            system("CLS");
 
             switch (indMenuDigit)
             {
             case INTEGER:
+                cout << arrDigit[INTEGER] << "\n";
                 arr = createArr(0, size);
 
                 if (!arr) {
@@ -188,6 +196,7 @@ int main(void)
                 break;
 
             case FLOAT:
+                cout << arrDigit[FLOAT] << "\n";
                 arrf = createArr(0.0f, size);
                 if (!arrf) {
                     throw new std::runtime_error("no RAM memory");
@@ -206,6 +215,7 @@ int main(void)
             {
                 selectMenu(arrOperation, EXIT3, arrMenu[2], indMenuOperation);
                 printMenu(arrOperation, EXIT3, arrMenu[2], indMenuOperation);
+                system("CLS");
 
                 switch (indMenuOperation)
                 {
@@ -254,6 +264,7 @@ int main(void)
                             return 1;
                         }
                         copyArr(arr, arrf, size);
+                        showArr(arrf, size);
                         deleteArr(arr);
                     }
                     else
@@ -269,6 +280,7 @@ int main(void)
                             return 1;
                         }
                         copyArr(arrf, arr, size);
+                        showArr(arr, size);
                         deleteArr(arrf);
                     }
                     else
@@ -282,6 +294,7 @@ int main(void)
             else if (!arrf)
                 deleteArr(arr);
 
+            cout << "\n" << arrOperation[EXIT3] << "\n";
             break;
         }
     case EXIT:

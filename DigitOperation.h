@@ -21,14 +21,14 @@ inline int createValue(int value, short min, short max) {
 	srand(time(NULL));
 	rand();
 
-	return min + rand() % (max - min);
+	return static_cast<int>(min + rand() % (max - min));
 }
 ;
 inline float createValue(float value, short min, short max) {
 	srand(time(NULL));
 	rand();
 
-	return (float)(min + rand() % (max - min));
+	return static_cast<float>(min + rand() % (max - min));
 }
 ;
 inline void sumValue(int a, int b, int& sum) {

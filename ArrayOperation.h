@@ -18,6 +18,9 @@ void sumArr(float* arr, float& sum, const short size = 2);
 void substarctArr(int* arr, int& substract, const short size = 2);
 void substarctArr(float* arr, float& substract, const short size = 2);
 
+void copyArr(int* arr, float* arrf, const short size = 2);
+void copyArr(float* arrf, int* arr, const short size = 2);
+
 //==================FUNCTIONS==================//
 
 inline int* createArr(const int value, const short size) {
@@ -36,7 +39,7 @@ void fillArr(int* arr, short min, short max, const short size) {
 	rand();
 
 	for (int* iter = arr; iter != arr + size; iter++)
-		*iter = min + rand() % (max - min);
+		*iter = static_cast<int>(min + rand() % (max - min));
 }
 ;
 void fillArr(float* arr, short min, short max, const short size) {
@@ -45,19 +48,19 @@ void fillArr(float* arr, short min, short max, const short size) {
 	rand();
 
 	for (float* iter = arr; iter != arr + size; iter++)
-		*iter = (float)(min + rand() % (max - min));
+		*iter = static_cast<float>(min + rand() % (max - min));
 }
 ;
-void copyArr(int* arr, float *arrf, const short size = 2) {
+void copyArr(int* arr, float *arrf, const short size) {
 
 	for (float* iter = arrf; iter != arrf + size; iter++)
 		*iter = static_cast<float>(*arr++);
 }
 ;
-void copyArr(float* arrf, int *arr, const short size = 2) {
+void copyArr(float* arrf, int *arr, const short size) {
 
-	for (float* iter = arrf; iter != arrf + size; iter++)
-		*iter = static_cast<float>(*arr++);
+	for (int* iter = arr; iter != arr + size; iter++)
+		*iter = static_cast<int>(*arrf++);
 }
 ;
 void deleteArr(int* arr) {
